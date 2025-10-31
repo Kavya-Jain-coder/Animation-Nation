@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.matrix {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.column {
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    color: #0f0;
+    text-shadow: 0 0 8px #0f0;
+    white-space: pre;
+    line-height: 1.2;
+    animation: fall var(--duration) linear infinite;
+    animation-delay: var(--delay);
+    opacity: 0;
+    position: relative;
+    letter-spacing: 2px;
+}
+
+.column::before {
+    content: '10101001\A11010110\A01101101\A10011010\A11100101\A01010111\A10101100\A11011001\A01100110\A10110011\A11001010\A01011101\A10101001\A11010110\A01101101';
+    display: block;
+    animation: colorShift var(--duration) linear infinite;
+    animation-delay: var(--delay);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes colorShift {
+    0%, 100% {
+        color: #0f0;
+        text-shadow: 0 0 8px #0f0;
+    }
+    50% {
+        color: #0f8;
+        text-shadow: 0 0 12px #0f8, 0 0 20px #0f0;
+    }
+}
